@@ -1,7 +1,15 @@
-<%= form_for(task) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_area :details %>
-  <%= f.submit %>
-<% end %>
+<div class="container mb-3 mt-3">
+  <%= simple_form_for(task) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :details, as: :text %>
+    <% if task.new_record? %>
+      <% cancel_link = tasks_path %>
+      <%= f.input :completed, as: :hidden, input_html: { value: false } %>
+    <% else %>
+      <% cancel_link = task_path(@task) %>
+      <%= f.input :completed, as: :boolean %>
+    <% end %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= link_to  "Cancel", cancel_link, class: "btn btn-outline-primary" %>
+  <% end %>
+</div>

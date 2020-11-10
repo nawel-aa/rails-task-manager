@@ -10,9 +10,8 @@ Rails.application.routes.draw do
 
   # DELETE
   delete '/tasks/:id', to: 'tasks#destroy'
-  
+
   # UPDATE
   get '/tasks/:id/edit', to: 'tasks#edit', as: :edit_task
   patch '/tasks/:id', to: 'tasks#update'
-
 end

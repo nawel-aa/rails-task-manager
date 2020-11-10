@@ -1,8 +1,19 @@
-<h1><%= @task.title %></h1>
-<p><%= @task.details %></p>
-<input id="completed" type="checkbox" disabled <%= "checked" if @task.completed %>>
-<label for="completed"><%= @task.completed ? "This task is completed" : "This task is not completed yet" %></label>
-
-<%= link_to  "Tasks", tasks_path %>
-<%= link_to  "Edit", edit_task_path(@task) %>
-<%= link_to  "Delete", task_path(@task), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="container mt-3 mb-3">
+<%= link_to  "Back to list of tasks", tasks_path, class: 'd-block mb-3' %>
+  <div class="card p-3">
+    <h1><%= @task.title %></h1>
+    <p><%= @task.details %></p>
+    <p class="text-secondary"><%= @task.completed ? "✔ This task is completed" : "This task is not completed yet" %></p>
+  
+    <div>
+      <ul class="list-inline">
+      	<li class="list-inline-item">
+          <%= link_to  "Edit", edit_task_path(@task), class: 'btn btn-success' %>
+        </li>
+      	<li class="list-inline-item">
+          <%= link_to  "Delete", task_path(@task), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
